@@ -10,11 +10,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class ApartmentUrls {
+public class ApartmentsFinder {
     private List<String> apartmentUrls;
 
-    ApartmentUrls(String[] urls){
+    public ApartmentsFinder(String[] urls){
         apartmentUrls = new ArrayList<>();
         Elements linkToApartment;
         try {
@@ -33,14 +34,21 @@ public class ApartmentUrls {
 
 
     public List<Apartment> getApartments(){
-        List<Apartment> apartmentObjs = new ArrayList<>();
+        HashSet<Apartment> apartmentObjs = new HashSet<>();
         for (String apartmentUrl : apartmentUrls){
             apartmentObjs.add(new Apartment(apartmentUrl));
         }
-        List<Apartment> apartmentsWithoutDuplicates = new ArrayList<>(new HashSet<>(apartmentObjs));
-        return apartmentsWithoutDuplicates;
+
+        return filterApartments(new ArrayList<>((apartmentObjs)));
     }
 
+    private List<Apartment> filterApartments(List<Apartment> apartments){
 
+
+        return apartments.stream()
+                .filter(apartment ->
+                        !apartment.getName().toLowerCase().contains("senior"))
+                        .collect(Collectors.toList());
+    }
 
 }
