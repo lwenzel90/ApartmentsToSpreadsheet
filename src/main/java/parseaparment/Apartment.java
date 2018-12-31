@@ -19,12 +19,17 @@ public class Apartment {
     private String bedNumber;
     private String includedUtils;
     private String address;
+
+
+
     private String squareFeet;
 
     public String getName() {
         return name;
     }
-
+    public String getSquareFeet() {
+        return squareFeet;
+    }
 
     public Apartment(String url){
         try {

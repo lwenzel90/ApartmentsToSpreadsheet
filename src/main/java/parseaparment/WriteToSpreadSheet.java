@@ -87,8 +87,7 @@ public class WriteToSpreadSheet {
                 .build();
 
         String range = "ApartmentData!A:F";
-        ClearValuesResponse result =
-                service.spreadsheets().values().clear(spreadsheetId, range, new ClearValuesRequest())
+        service.spreadsheets().values().clear(spreadsheetId, range, new ClearValuesRequest())
                         .execute();
         System.out.println("Cleared out spreadsheet");
     }

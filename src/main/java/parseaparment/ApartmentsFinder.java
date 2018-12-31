@@ -43,12 +43,23 @@ public class ApartmentsFinder {
     }
 
     private List<Apartment> filterApartments(List<Apartment> apartments){
+        apartments = filterSeniorApartments(apartments);
+        apartments = filterEmptySquareFeet(apartments);
+        return apartments;
+    }
 
-
+    private List<Apartment> filterSeniorApartments(List<Apartment> apartments){
         return apartments.stream()
                 .filter(apartment ->
                         !apartment.getName().toLowerCase().contains("senior"))
-                        .collect(Collectors.toList());
+                .collect(Collectors.toList());
+    }
+
+    private List<Apartment> filterEmptySquareFeet(List<Apartment> apartments){
+        return apartments.stream()
+                .filter(apartment ->
+                        !apartment.getSquareFeet().toLowerCase().equals(""))
+                .collect(Collectors.toList());
     }
 
 }
