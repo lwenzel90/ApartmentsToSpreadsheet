@@ -2,7 +2,6 @@ package parseaparment;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.util.List;
 
 public class Main {
 
@@ -18,7 +17,7 @@ public class Main {
 //        WriteToSpreadSheet writer = new WriteToSpreadSheet();
 //        writer.write(apartments);
 
-        Directions directions = new Directions();
+        DirectionsRequester directions = new DirectionsRequester();
     }
 
 }
